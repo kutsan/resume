@@ -1,0 +1,167 @@
+% Style configuration
+
+% =============================================================================
+% PACKAGES
+% =============================================================================
+
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% =============================================================================
+% FONT CONFIGURATION
+% =============================================================================
+
+\setstretch{1.15}
+
+\defaultfontfeatures[iA Writer Quattro S]{
+  Path = fonts/ia-writer-quattro/,
+  UprightFont = iAWriterQuattroS-Regular.ttf,
+  ItalicFont = iAWriterQuattroS-Italic.ttf,
+  BoldFont = iAWriterQuattroS-Bold.ttf,
+  BoldItalicFont = iAWriterQuattroS-BoldItalic.ttf
+}
+\setmainfont{iA Writer Quattro S}
+\setsansfont{iA Writer Quattro S}
+\setmonofont{iA Writer Quattro S}
+
+% =============================================================================
+% MODERNCV CONFIGURATION
+% =============================================================================
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+% =============================================================================
+% COLOR PALETTE
+% =============================================================================
+
+\definecolor{accent}{HTML}{2563EB}      % Modern blue for links/highlights
+\definecolor{darktext}{HTML}{1F2937}    % Dark gray for main text
+\definecolor{mediumtext}{HTML}{4B5563}  % Medium gray for secondary text
+\definecolor{lighttext}{HTML}{6B7280}   % Light gray for tertiary text
+\definecolor{tagbg}{HTML}{E0E7FF}       % Light blue background for tags
+\definecolor{tagtext}{HTML}{3730A3}     % Dark blue for tag text
+
+% Apply custom colors to moderncv
+\colorlet{color0}{darktext}    % Main text color
+\colorlet{color1}{accent}      % Accent color (name, section titles)
+\colorlet{color2}{mediumtext}  % Secondary text color
+
+% =============================================================================
+% SPACING CONFIGURATION
+% =============================================================================
+
+% Job entry spacing (gap between entries)
+\newlength{\jobentryspacing}
+\setlength{\jobentryspacing}{1.25em}
+
+% Section spacing (gap between sections)
+\newlength{\sectionspacing}
+\setlength{\sectionspacing}{1em}
+
+% Section title spacing (gap below section titles)
+\newlength{\sectiontitlespacing}
+\setlength{\sectiontitlespacing}{1em}
+
+% Skills spacing (gap between bullets and skill tags)
+\newlength{\skillsspacing}
+\setlength{\skillsspacing}{1em}
+
+% Bullet point spacing
+\newlength{\bulletbeforeskip}
+\newlength{\bulletparsep}
+\newlength{\bulletitemsep}
+\newlength{\bulletleftmargin}
+
+\setlength{\bulletbeforeskip}{0.2em}
+\setlength{\bulletparsep}{0.2em}
+\setlength{\bulletitemsep}{0.35em}
+\setlength{\bulletleftmargin}{1.5em}
+
+% =============================================================================
+% NAME AND TITLE STYLES
+% =============================================================================
+
+\setlength{\makecvheadnamewidth}{10cm}
+
+% Reduce space between name and title
+\renewcommand*{\titlestyle}[1]{{\vspace{-0.4em}\titlefont\textcolor{color2!85}{#1}}}
+
+% Make date column text smaller to prevent wrapping
+\renewcommand*{\hintstyle}[1]{\textcolor{color2}{\footnotesize #1}}
+
+% Override moderncv's default: make first name bold, last name normal
+\makeatletter
+\renewcommand*{\namefont}{\fontsize{34}{36}\selectfont}
+\renewcommand*{\firstnamestyle}[1]{{\namefont\textcolor{color3}{#1}}}
+\renewcommand*{\lastnamestyle}[1]{{\namefont\textcolor{color2}{#1}}}
+\renewcommand*{\sectionfont}{\Large\upshape}
+\renewcommand*{\sectionstyle}[1]{{\sectionfont\textcolor{color1}{#1}}}
+\makeatother
+
+% =============================================================================
+% SECTION STYLING
+% =============================================================================
+
+% Redefine \section to use configurable title spacing
+\makeatletter
+\RenewDocumentCommand{\section}{sm}{%
+  \par\addvspace{2.5ex}%
+  \phantomsection{}%
+  \addcontentsline{toc}{section}{#2}%
+  \cvitem[0ex]{\strut\raggedleft\raisebox{\baseletterheight}{\color{bodyrulecolor}\rule{\hintscolumnwidth}{0.95ex}}}{\strut\sectionstyle{#2}}%
+  \par\nobreak\addvspace{\sectiontitlespacing}\@afterheading}
+\makeatother
+
+% =============================================================================
+% BULLET POINT STYLING
+% =============================================================================
+
+\setlist[itemize]{
+  before=\vspace{\bulletbeforeskip},
+  after=\vspace{0em},
+  topsep=0pt,
+  partopsep=0pt,
+  parsep=\bulletparsep,
+  itemsep=\bulletitemsep,
+  leftmargin=\bulletleftmargin,
+  label=\textcolor{accent}{\small\textbullet}
+}
+
+% =============================================================================
+% LINK STYLING
+% =============================================================================
+
+\makeatletter
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    citecolor=accent,
+    pdfauthor={\@firstname~\@lastname},
+    pdftitle={\@firstname~\@lastname{} - Resume},
+    pdfsubject={Resume},
+    pdfkeywords={fullstack, developer, typescript, react}
+  }%
+}
+\makeatother
+
+% =============================================================================
+% FOOTER
+% =============================================================================
+
+\nopagenumbers
+
+\makeatletter
+\fancypagestyle{resume}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[C]{\textcolor{lighttext}{\small \@firstname~\@lastname\ \textbullet\ Page \thepage\ of \pageref*{LastPage}}}%
+}
+\makeatother
+\pagestyle{resume}

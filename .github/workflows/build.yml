@@ -1,0 +1,43 @@
+name: Build Resume
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-fonts-extra texlive-latex-extra latexmk
+
+      - name: Build PDF
+        run: make all
+        env:
+          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Prepare artifact
+        id: prep
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+
+            const shortSha = context.sha.substring(0, 7)
+            const filename = `resume-${shortSha}.pdf`
+
+            fs.renameSync('dist/resume.pdf', filename)
+            core.setOutput('filename', filename)
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.prep.outputs.filename }}
+          path: ${{ steps.prep.outputs.filename }}

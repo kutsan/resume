@@ -1,0 +1,98 @@
+\usepackage{etoolbox}
+
+% Section input with automatic spacing (like CSS gap)
+\newcommand{\inputsection}[1]{%
+	\input{#1}%
+	\vspace{\sectionspacing}%
+}
+
+% Date formatting: converts YYYY-MM-DD to "Mon YYYY", passes other values through
+\newcommand{\monthname}[1]{%
+	\ifcase#1\or Jan\or Feb\or Mar\or Apr\or May\or Jun\or Jul\or Aug\or Sep\or Oct\or Nov\or Dec\fi%
+}
+\makeatletter
+\newcommand{\formatdate}[1]{\expandafter\@formatdate#1-\@nil}
+\def\@formatdate#1-#2\@nil{%
+	\if\relax\detokenize{#2}\relax#1\else\@parsedate#1-#2\fi%
+}
+\def\@parsedate#1-#2-#3-{\monthname{#2} #1}
+\makeatother
+
+% Job entry styling (key-value interface)
+\makeatletter
+\define@key{jobentry}{start}{\def\je@start{#1}}
+\define@key{jobentry}{end}{\def\je@end{#1}}
+\define@key{jobentry}{title}{\def\je@title{#1}}
+\define@key{jobentry}{company}{\def\je@company{#1}}
+\define@key{jobentry}{url}{\def\je@url{#1}}
+\define@key{jobentry}{location}{\def\je@location{#1}}
+\define@key{jobentry}{employment_type}{\def\je@employmenttype{#1}}
+\define@key{jobentry}{location_type}{\def\je@locationtype{#1}}
+\define@key{jobentry}{content}{\def\je@content{#1}}
+
+% Helper: Render company name, linked if URL provided
+\newcommand{\je@companytext}{%
+	\textcolor{accent}{%
+		\ifblank{\je@url}%
+			{\je@company}%
+			{\href{\je@url}{\je@company}}%
+	}%
+}
+
+% Helper: Render employment type and location type with separator
+\newcommand{\je@metadata}{%
+	\textcolor{lighttext}{%
+		\ifdefempty{\je@employmenttype}%
+			{\je@locationtype}%
+			{\je@employmenttype\ifdefempty{\je@locationtype}{}{ · \je@locationtype}}%
+	}%
+}
+
+\newcommand{\jobentry}[1]{%
+	% Set defaults for optional parameters
+	\def\je@end{Present}%
+	\def\je@url{}%
+	\def\je@employmenttype{}%
+	\def\je@locationtype{}%
+	\def\je@content{}%
+	\setkeys{jobentry}{#1}%
+	\begin{samepage}%
+	\cventry
+		{\formatdate{\je@end}\\\formatdate{\je@start}}% dates
+		{\je@title}%																		job title
+		{\je@companytext}%															company (linked)
+		{\je@location}%																	location
+		{\je@metadata}%																	employment/location type
+		{\je@content}%																	description
+	\end{samepage}%
+	\vspace{\jobentryspacing}%
+}
+\makeatother
+
+% Skills as tag boxes
+\newcommand{\skills}[1]{%
+	\vspace{\skillsspacing}\par\noindent%
+	\foreach \skill in {#1} {%
+		\skilltag{\skill}%
+	}%
+}
+
+% Skill tag visual configuration
+\tikzset{
+	skilltag/.style={
+		fill=tagbg,
+		rounded corners=2pt,
+		inner xsep=4pt,
+		inner ysep=2pt,
+		font=\scriptsize\color{tagtext},
+		text height=1.5ex,
+		text depth=0.4ex
+	}
+}
+
+% Individual skill tag with background
+\newcommand{\skilltag}[1]{%
+	\tikz[baseline=(text.base)]{%
+		\node[skilltag] (text) {#1};%
+	}\hspace{1pt}\allowbreak%
+}
