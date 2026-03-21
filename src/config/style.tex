@@ -50,6 +50,7 @@
 \colorlet{color0}{darktext}    % Main text color
 \colorlet{color1}{accent}      % Accent color (name, section titles)
 \colorlet{color2}{mediumtext}  % Secondary text color
+\providecolor{bodyrulecolor}{named}{color1}
 
 % =============================================================================
 % SPACING CONFIGURATION
@@ -97,7 +98,9 @@
 % Override moderncv's default: make first name bold, last name normal
 \makeatletter
 \renewcommand*{\namefont}{\fontsize{34}{36}\selectfont}
+\providecommand*{\firstnamestyle}[1]{}
 \renewcommand*{\firstnamestyle}[1]{{\namefont\textcolor{color3}{#1}}}
+\providecommand*{\lastnamestyle}[1]{}
 \renewcommand*{\lastnamestyle}[1]{{\namefont\textcolor{color2}{#1}}}
 \renewcommand*{\sectionfont}{\Large\upshape}
 \renewcommand*{\sectionstyle}[1]{{\sectionfont\textcolor{color1}{#1}}}
