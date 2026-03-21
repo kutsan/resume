@@ -35,6 +35,11 @@
 \moderncvstyle{classic}
 \moderncvcolor{blue}
 
+% Left-align text in cv entries (disable justification)
+\usepackage{xpatch}
+\xpatchcmd{\cvitem}{#3}{\raggedright #3\par}{}{}
+\xpatchcmd{\cventry}{\small}{\small\raggedright}{}{}
+
 % =============================================================================
 % COLOR PALETTE
 % =============================================================================
