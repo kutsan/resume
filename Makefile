@@ -12,7 +12,7 @@ all: $(PDF)
 
 $(PDF): src/*.tex src/*/*.tex
 	@mkdir -p $(DIST)
-	@latexmk -cd -silent -xelatex -interaction=nonstopmode $(PRETEX_FLAGS) -output-directory=../$(DIST) $(SRC)
+	@latexmk -cd -f -silent -xelatex -interaction=nonstopmode $(PRETEX_FLAGS) -output-directory=../$(DIST) $(SRC)
 
 clean:
 	@rm -rf $(DIST)
