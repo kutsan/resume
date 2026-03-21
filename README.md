@@ -4,7 +4,7 @@ Personal resume built with LaTeX and XeTeX.
 
 ## PDF Builds
 
-Go to the **Actions** tab, open the latest run, and download the artifact to view the built PDF. Every push to the default branch triggers a [GitHub Actions workflow](.github/workflows/build.yml) that builds the PDF and uploads it as an artifact.
+See [latest builds](https://github.com/kutsan/resume/actions/workflows/build.yml), open the latest run, and download the artifact to view the built PDF.
 
 ## Building Locally
 
