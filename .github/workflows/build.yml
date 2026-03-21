@@ -8,15 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-fonts-extra texlive-latex-extra latexmk
+        uses: actions/checkout@v5
 
       - name: Build PDF
         run: make all
@@ -25,7 +22,7 @@ jobs:
 
       - name: Prepare artifact
         id: prep
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs')
@@ -38,7 +35,7 @@ jobs:
             core.setOutput('filename', filename)
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.prep.outputs.filename }}
           path: ${{ steps.prep.outputs.filename }}
