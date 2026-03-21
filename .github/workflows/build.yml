@@ -30,9 +30,7 @@ jobs:
           script: |
             const fs = require('fs')
 
-            const { data: user } = await github.rest.users.getAuthenticated()
-            const nameSlug = user.name.toLowerCase().replaceAll(' ', '-')
-
+            const nameSlug = 'kutsan-kaplan'
             const shortSha = context.sha.substring(0, 7)
             const filename = `${nameSlug}-resume-${shortSha}.pdf`
 
