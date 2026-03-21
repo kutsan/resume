@@ -1,22 +1,21 @@
-SRC = src/main.tex
-DIST = dist
-PDF = $(DIST)/main.pdf
+IMAGE = texlive/texlive:latest
+SRC   = src/main.tex
+DIST  = dist
+
+ifndef CI
+RUN = docker run --rm -v $(CURDIR):/workspace -w /workspace \
+	--user $(shell id -u):$(shell id -g) $(IMAGE)
+endif
 
 ifdef BUILD_URL
 PRETEX_FLAGS = -usepretex -pretex='\def\builddate{\today}\def\buildurl{$(BUILD_URL)}'
 endif
 
-.PHONY: all clean watch
+.PHONY: all clean
 
-all: $(PDF)
-
-$(PDF): src/*.tex src/*/*.tex
+all:
 	@mkdir -p $(DIST)
-	@latexmk -cd -f -xelatex -interaction=nonstopmode $(PRETEX_FLAGS) -output-directory=../$(DIST) $(SRC)
+	@$(RUN) latexmk -cd -f -xelatex -interaction=nonstopmode $(PRETEX_FLAGS) -output-directory=../$(DIST) $(SRC)
 
 clean:
 	@rm -rf $(DIST)
-
-watch:
-	@mkdir -p $(DIST)
-	@latexmk -cd -pvc -silent -xelatex -interaction=nonstopmode -output-directory=../$(DIST) $(SRC)
