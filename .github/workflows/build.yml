@@ -30,10 +30,13 @@ jobs:
           script: |
             const fs = require('fs')
 
-            const shortSha = context.sha.substring(0, 7)
-            const filename = `resume-${shortSha}.pdf`
+            const { data: user } = await github.rest.users.getAuthenticated()
+            const nameSlug = user.name.toLowerCase().replaceAll(' ', '-')
 
-            fs.renameSync('dist/resume.pdf', filename)
+            const shortSha = context.sha.substring(0, 7)
+            const filename = `${nameSlug}-resume-${shortSha}.pdf`
+
+            fs.renameSync('dist/main.pdf', filename)
             core.setOutput('filename', filename)
 
       - name: Upload artifact
