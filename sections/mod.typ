@@ -1,0 +1,5 @@
+#include "summary.typ"
+#include "experience.typ"
+#include "skills.typ"
+#include "education.typ"
+#include "about.typ"

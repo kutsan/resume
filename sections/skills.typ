@@ -1,0 +1,32 @@
+#import "../theme/mod.typ" as theme
+#import "../components/mod.typ": section-heading, labeled-entry
+
+#section-heading("Technical Skills")
+
+#stack(dir: ttb, spacing: theme.labeled-entry-gap,
+  labeled-entry(label: "Frontend", [
+    Building responsive, accessible interfaces with *HTML*, *CSS*, *JavaScript*, and *TypeScript*.
+
+    Developing complex SPAs using *React*, *Next.js*, and state management with *Redux Toolkit* and *RTK Query*.
+  ]),
+  labeled-entry(label: "Mobile", [
+    Cross-platform mobile development with *React Native* and *Expo*.
+
+    Implementing native navigation patterns and optimizing performance for iOS and Android.
+  ]),
+  labeled-entry(label: "Backend", [
+    Server-side development with *Node.js*, *Fastify*.
+
+    Designing *RESTful APIs* and *GraphQL* schemas with *Drizzle* ORM and *Better Auth*.
+  ]),
+  labeled-entry(label: "DevOps", [
+    Cloud infrastructure on *Google Cloud Platform* including *Cloud Run*, *Cloud SQL*, and *Memorystore*.
+
+    CI/CD pipelines with *GitHub Actions*, error tracking with *Sentry*, and cloud services with *Firebase*.
+  ]),
+  labeled-entry(label: "Tools", [
+    Version control with *Git*, payment integration with *RevenueCat* and *Stripe*.
+
+    Content management using *Strapi* and *KeystoneJS*, analytics with *Google Tag Manager*.
+  ]),
+)

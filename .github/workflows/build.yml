@@ -8,17 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: texlive/texlive:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Install Typst
+        uses: typst-community/setup-typst@v5
+
       - name: Build PDF
-        run: make all
         env:
-          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TYPST_FONT_PATHS: fonts
+        run: |-
+          typst compile main.typ main.pdf
 
       - name: Prepare artifact
         id: prep
@@ -27,11 +29,12 @@ jobs:
           script: |
             const fs = require('fs')
 
-            const nameSlug = 'kutsan-kaplan'
-            const shortSha = context.sha.substring(0, 7)
-            const filename = `${nameSlug}-resume-${shortSha}.pdf`
+            const prefix = '${{ vars.BUILD_OUTPUT_FILE_PREFIX }}'
+            const filename = prefix
+              ? `${prefix} Resume.pdf`
+              : `Resume.pdf`
 
-            fs.renameSync('dist/main.pdf', filename)
+            fs.renameSync('main.pdf', filename)
             core.setOutput('filename', filename)
 
       - name: Upload artifact
