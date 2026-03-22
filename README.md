@@ -1,23 +1,29 @@
 # resume
 
-Personal resume built with LaTeX and XeTeX.
+My personal resume built with [Typst](https://typst.app/).
 
-## PDF Builds
+## Preview
 
 See [latest builds](https://github.com/kutsan/resume/actions/workflows/build.yml), open the latest run, and download the artifact to view the built PDF.
 
-## Building Locally
+## Development
 
-Requires [TeX Live](https://tug.org/texlive/) with XeTeX and [latexmk](https://ctan.org/pkg/latexmk).
+Requires [Typst](https://typst.app/) and [just](https://github.com/casey/just).
 
 ```sh
-make
+just build
 ```
 
-The compiled PDF will be at `dist/main.pdf`.
+The compiled PDF will be at `out/main.pdf`.
 
 To watch for changes and rebuild automatically:
 
 ```sh
-make watch
+just watch
+```
+
+To remove build artifacts:
+
+```sh
+just clean
 ```
