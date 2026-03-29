@@ -18,10 +18,10 @@
 ) = {
   grid(
     columns: (1fr, auto),
-    column-gutter: styles.layout.sizes.column-gutter,
+    column-gutter: styles.layout.column-gutter,
 
     grid(
-      row-gutter: styles.layout.sizes.header-name-row-gutter,
+      row-gutter: styles.layout.header-name-row-gutter,
 
       text(size: styles.fonts.sizes.title, {
         text(fill: styles.colors.content.primary, author.first-name)

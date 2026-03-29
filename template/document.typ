@@ -1,4 +1,5 @@
 #import "../styles/mod.typ": styles
+#import "../utils/constants.typ": symbols
 
 #let document-setup(
   author: (
@@ -9,7 +10,13 @@
   body,
 ) = {
   set document(
-    title: author.first-name + " " + author.last-name + " " + styles.symbols.em-dash + " Resume",
+    title: author.first-name
+      + " "
+      + author.last-name
+      + " "
+      + symbols.en-dash
+      + " "
+      + "Resume",
     author: author.first-name + " " + author.last-name,
     keywords: keywords,
   )

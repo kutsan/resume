@@ -1,9 +1,8 @@
-#import "sizes.typ": primitive-sizes
+#import "spacings.typ": spacing
 #import "colors.typ": colors
 #import "fonts.typ": font-families, font-leadings, font-sizes
 #import "strokes.typ": strokes
-#import "symbols.typ": symbols
-#import "layout.typ": layout-page-sizes, layout-sizes
+#import "layout.typ": layout-page, layout-tokens
 
 #let styles = (
   colors: colors,
@@ -12,11 +11,7 @@
     sizes: font-sizes,
     leadings: font-leadings,
   ),
-  layout: (
-    sizes: layout-sizes,
-    page-sizes: layout-page-sizes,
-  ),
-  primitive-sizes: primitive-sizes,
+  layout: layout-tokens + (page: layout-page),
+  spacing: spacing,
   strokes: strokes,
-  symbols: symbols,
 )

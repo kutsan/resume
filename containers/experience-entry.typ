@@ -1,4 +1,5 @@
 #import "../styles/mod.typ": styles
+#import "../utils/constants.typ": symbols
 #import "../components/mod.typ": content-block
 
 #let format-date(date) = {
@@ -56,7 +57,7 @@
     #text(
       size: styles.fonts.sizes.subtitle,
       fill: styles.colors.content.secondary,
-      meta-parts.join(" " + styles.symbols.middle-dot + " "),
+      meta-parts.join(" " + symbols.middle-dot + " "),
     )
 
     #show strong: set text(

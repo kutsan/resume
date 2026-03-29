@@ -1,24 +1,22 @@
-#let primitive-block-sizes = (
-  md: 64pt,
-)
+#import "spacings.typ": primitive-block-spacings
 
-#let layout-page-sizes = (
+#let layout-page = (
   margin: (
     x: 1.6cm,
     y: 2.2cm,
   ),
 )
 
-#let layout-sizes = (
+#let layout-tokens = (
   header-name-row-gutter: 1em,
-  hints-width: primitive-block-sizes.md,
+  hints-width: primitive-block-spacings.md,
   column-gutter: 10pt,
   heading-rule-height: 0.25em,
   block-spacing: (
-    small: 1em,
-    medium: 1.2em,
-    large: 1.5em,
-    xlarge: 1.8em,
+    sm: 1em,
+    md: 1.2em,
+    lg: 1.5em,
+    xl: 1.8em,
   ),
   heading-spacing: (
     base: (

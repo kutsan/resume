@@ -1,4 +1,5 @@
 #import "../styles/mod.typ": styles
+#import "../utils/constants.typ": symbols
 #import "../components/mod.typ": content-block
 
 #let format-year(date) = {
@@ -15,8 +16,8 @@
     #block(breakable: false)[
       #grid(
         columns: (1fr, auto),
-        column-gutter: styles.layout.sizes.column-gutter,
-        row-gutter: styles.layout.sizes.block-spacing.small,
+        column-gutter: styles.layout.column-gutter,
+        row-gutter: styles.layout.block-spacing.sm,
 
         strong(school-name),
 
@@ -26,7 +27,7 @@
 
           format-year(start-date)
             + " "
-            + styles.symbols.en-dash
+            + symbols.en-dash
             + " "
             + format-year(end-date),
         ),

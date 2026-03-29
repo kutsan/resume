@@ -2,12 +2,12 @@
 
 #let tag-list-styles = (
   padding: (
-    x: styles.primitive-sizes.sm,
+    x: styles.spacing.tag-padding-x,
     y: 3.5pt,
   ),
   radius: 2pt,
   border-width: 0.5pt,
-  gap: styles.primitive-sizes.xs,
+  gap: styles.spacing.tag-gap,
   leading: 0.4em,
 )
 

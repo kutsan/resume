@@ -1,4 +1,5 @@
 #import "../styles/mod.typ": styles
+#import "../utils/constants.typ": symbols
 
 #let typography-styles(body) = {
   set text(
@@ -8,19 +9,19 @@
 
   show heading.where(level: 1): it => {
     set block(
-      above: styles.layout.sizes.heading-spacing.base.above,
-      below: styles.layout.sizes.heading-spacing.base.below,
+      above: styles.layout.heading-spacing.base.above,
+      below: styles.layout.heading-spacing.base.below,
     )
 
     grid(
-      columns: (styles.layout.sizes.hints-width, 1fr),
-      column-gutter: styles.layout.sizes.column-gutter,
+      columns: (styles.layout.hints-width, 1fr),
+      column-gutter: styles.layout.column-gutter,
 
       align(
         horizon,
         rect(
           width: 100%,
-          height: styles.layout.sizes.heading-rule-height,
+          height: styles.layout.heading-rule-height,
           fill: styles.colors.content.primary,
         ),
       ),
@@ -49,8 +50,8 @@
   show link: set text(fill: styles.colors.brand.primary)
 
   set list(
-    marker: text(fill: styles.colors.brand.primary, styles.symbols.bullet),
-    spacing: styles.layout.sizes.block-spacing.small,
+    marker: text(fill: styles.colors.brand.primary, symbols.bullet),
+    spacing: styles.layout.block-spacing.sm,
   )
 
   body
