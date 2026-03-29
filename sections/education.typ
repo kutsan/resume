@@ -5,6 +5,6 @@
 #education-entry(
   school-name: "Polinas Technical Anatolian High School",
   department-name: "Information Technologies",
-  start-year: "2011",
-  end-year: "2015",
+  start-date: datetime(year: 2011, month: 1, day: 1),
+  end-date: datetime(year: 2015, month: 1, day: 1),
 )

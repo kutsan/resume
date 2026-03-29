@@ -1,17 +1,34 @@
-#import "../styles/mod.typ": colors, sizes
+#import "../styles/mod.typ": styles
+
+#let tag-list-styles = (
+  padding: (
+    x: styles.primitive-sizes.sm,
+    y: 3.5pt,
+  ),
+  radius: 2pt,
+  border-width: 0.5pt,
+  gap: styles.primitive-sizes.xs,
+  leading: 0.4em,
+)
 
 #let tag-list(items) = {
-  block(above: sizes.tag.gap, below: 0pt, {
-  set par(leading: sizes.tag.leading)
+  block(above: tag-list-styles.gap, below: 0pt, {
+    set par(leading: tag-list-styles.leading)
 
-  for item in items {
-    box(
-      inset: (x: sizes.tag.padding.x, y: sizes.tag.padding.y),
-      radius: sizes.tag.radius,
-      fill: colors.tertiary,
-      text(size: sizes.font.footer, fill: colors.secondary, item),
-    )
-    h(sizes.tag.gap)
-  }
+    for item in items {
+      box(
+        inset: (x: tag-list-styles.padding.x, y: tag-list-styles.padding.y),
+        radius: tag-list-styles.radius,
+        fill: styles.colors.brand.tertiary,
+
+        text(
+          size: styles.fonts.sizes.footer,
+          fill: styles.colors.brand.secondary,
+          item,
+        ),
+      )
+
+      h(tag-list-styles.gap)
+    }
   })
 }

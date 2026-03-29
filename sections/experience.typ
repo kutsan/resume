@@ -4,7 +4,7 @@
 = Experience
 
 #experience-entry(
-  start-date: "2024-05-01",
+  start-date: datetime(year: 2024, month: 5, day: 1),
   title: "Fullstack Developer",
   company-name: "Wavera",
   company-website: "https://wavera.co",
@@ -31,8 +31,8 @@
 ]
 
 #experience-entry(
-  start-date: "2021-12-01",
-  end-date: "2024-03-01",
+  start-date: datetime(year: 2021, month: 12, day: 1),
+  end-date: datetime(year: 2024, month: 3, day: 1),
   title: "Frontend Developer",
   company-name: "HubX",
   company-website: "https://hubx.co",
@@ -64,8 +64,8 @@
 ]
 
 #experience-entry(
-  start-date: "2021-03-01",
-  end-date: "2021-12-01",
+  start-date: datetime(year: 2021, month: 3, day: 1),
+  end-date: datetime(year: 2021, month: 12, day: 1),
   title: "Frontend Developer",
   company-name: "Eduo Technology",
   company-website: "https://eduo.tech",
@@ -92,8 +92,8 @@
 ]
 
 #experience-entry(
-  start-date: "2017-01-01",
-  end-date: "2018-04-01",
+  start-date: datetime(year: 2017, month: 1, day: 1),
+  end-date: datetime(year: 2018, month: 4, day: 1),
   title: "Frontend Developer",
   company-name: "Freelance",
   location: "Manisa, Turkey",

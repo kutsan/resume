@@ -1,20 +1,21 @@
-#import "../styles/mod.typ": colors, sizes
+#import "../styles/mod.typ": styles
 
 #let content-block(aside: none, body) = {
   grid(
-    columns: (sizes.layout.hints-width, 1fr),
-    column-gutter: sizes.layout.column-gutter,
+    columns: (styles.layout.sizes.hints-width, 1fr),
+    column-gutter: styles.layout.sizes.column-gutter,
 
     if aside != none {
       align(
         right,
         text(
-          size: sizes.font.aside,
-          fill: colors.content-tertiary,
+          size: styles.fonts.sizes.aside,
+          fill: styles.colors.content.tertiary,
           aside,
         ),
       )
     },
+
     body,
   )
 }
