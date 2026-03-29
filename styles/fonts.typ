@@ -20,6 +20,7 @@
   heading: primitive-font-sizes.lg,
   footer: primitive-font-sizes.xs,
   aside: primitive-font-sizes.sm,
+  subheading: primitive-font-sizes.md,
   subtitle: primitive-font-sizes.sm,
   description: primitive-font-sizes.sm,
   tag: primitive-font-sizes.xsm,

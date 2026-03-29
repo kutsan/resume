@@ -49,20 +49,15 @@
   if location-type != none { meta-parts.push(location-type) }
 
   content-block(aside: date-aside)[
-    #place(hide(heading(
+    #heading(
       level: 2,
-      outlined: true,
       bookmarked: true,
-    )[#title #styles.symbols.em-dash #company-name]))
-
-    *#title*, #company-name-content \
+    )[*#title*, #company-name-content] \
     #text(
       size: styles.fonts.sizes.subtitle,
       fill: styles.colors.content.secondary,
       meta-parts.join(" " + styles.symbols.middle-dot + " "),
     )
-
-    #set par(leading: styles.fonts.leadings.body)
 
     #show strong: set text(
       stroke: styles.strokes.faux-bold-stroke + styles.colors.content.secondary,

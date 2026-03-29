@@ -2,4 +2,4 @@
 #include "experience.typ"
 #include "skills.typ"
 #include "education.typ"
-#include "about-this-resume.typ"
+#include "about-this-document.typ"

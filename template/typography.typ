@@ -32,6 +32,11 @@
     )
   }
 
+  show heading.where(level: 2): it => text(
+    size: styles.fonts.sizes.subheading,
+    it.body,
+  )
+
   set par(
     leading: styles.fonts.leadings.body,
   )

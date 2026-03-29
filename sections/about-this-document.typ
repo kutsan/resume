@@ -1,6 +1,6 @@
 #import "../components/mod.typ": content-block
 
-= About this resume
+= About This Document
 
 #let repository-url = "https://github.com/kutsan/resume"
 
