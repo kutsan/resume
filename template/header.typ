@@ -41,30 +41,36 @@
         fill: styles.colors.content.secondary,
       )
 
-      fa-phone(size: styles.fonts.sizes.icon)
-      [ ]
-      link("tel:" + author.phone-number, author.phone-number)
-      linebreak()
+      let contact-item(icon: none, url: none, label: none) = {
+        icon(size: styles.fonts.sizes.icon)
+        [ ]
+        link(url, label)
+      }
 
-      fa-envelope(size: styles.fonts.sizes.icon)
-      [ ]
-      link("mailto:" + author.email, author.email)
-      linebreak()
-
-      fa-linkedin(size: styles.fonts.sizes.icon)
-      [ ]
-      link(
-        author.social-accounts.linkedin.url,
-        author.social-accounts.linkedin.label,
+      let items = (
+        (
+          icon: fa-phone,
+          url: "tel:" + author.phone-number,
+          label: author.phone-number,
+        ),
+        (
+          icon: fa-envelope,
+          url: "mailto:" + author.email,
+          label: author.email,
+        ),
+        (
+          icon: fa-linkedin,
+          url: author.social-accounts.linkedin.url,
+          label: author.social-accounts.linkedin.label,
+        ),
+        (
+          icon: fa-github,
+          url: author.social-accounts.github.url,
+          label: author.social-accounts.github.label,
+        ),
       )
-      linebreak()
 
-      fa-github(size: styles.fonts.sizes.icon)
-      [ ]
-      link(
-        author.social-accounts.github.url,
-        author.social-accounts.github.label,
-      )
+      items.map(item => contact-item(..item)).join(linebreak())
     }),
   )
 }
