@@ -1,5 +1,28 @@
-#import "primitives/mod.typ": primitives
+#let primitive-font-families = (
+  ia-writer-quattro: "iA Writer Quattro S",
+)
 
-#let fonts = (
-  primary: primitives.fonts.ia-writer-quattro,
+#let primitive-font-sizes = (
+  xs: 9pt,
+  sm: 10pt,
+  md: 11pt,
+  lg: 14pt,
+  xl: 34pt,
+)
+
+#let font-families = (
+  content: primitive-font-families.ia-writer-quattro,
+)
+
+#let font-sizes = (
+  title: primitive-font-sizes.xl,
+  heading: primitive-font-sizes.lg,
+  footer: primitive-font-sizes.xs,
+  aside: primitive-font-sizes.sm,
+  subtitle: primitive-font-sizes.sm,
+  description: primitive-font-sizes.sm,
+)
+
+#let font-leadings = (
+  body: 0.75em,
 )
