@@ -1,7 +1,7 @@
 #import "typography.typ": typography-styles
 #import "document.typ": document-setup
 #import "page.typ": page-setup
-#import "../containers/mod.typ": header
+#import "header.typ": header
 
 #let template(
   author: (

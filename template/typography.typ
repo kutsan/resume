@@ -1,52 +1,52 @@
-#import "../styles/mod.typ": colors, fonts, sizes
+#import "../styles/mod.typ": styles
 
 #let typography-styles(body) = {
   set text(
-    font: fonts.primary,
-    fill: colors.content-primary,
+    font: styles.fonts.families.content,
+    fill: styles.colors.content.primary,
   )
 
   show heading.where(level: 1): it => {
     set block(
-      above: sizes.layout.heading-spacing.above,
-      below: sizes.layout.heading-spacing.below,
+      above: styles.layout.sizes.heading-spacing.base.above,
+      below: styles.layout.sizes.heading-spacing.base.below,
     )
 
     grid(
-      columns: (sizes.layout.hints-width, 1fr),
-      column-gutter: sizes.layout.column-gutter,
+      columns: (styles.layout.sizes.hints-width, 1fr),
+      column-gutter: styles.layout.sizes.column-gutter,
 
       align(
         horizon,
         rect(
           width: 100%,
-          height: sizes.layout.heading-rule-height,
-          fill: colors.content-primary,
+          height: styles.layout.sizes.heading-rule-height,
+          fill: styles.colors.content.primary,
         ),
       ),
       text(
-        size: sizes.font.heading,
-        fill: colors.primary,
+        size: styles.fonts.sizes.heading,
+        fill: styles.colors.brand.primary,
         it.body,
       ),
     )
   }
 
   set par(
-    leading: sizes.font.leading.body,
+    leading: styles.fonts.leadings.body,
   )
 
   // Faux bold for strong text.
   show strong: set text(
-    stroke: sizes.font.faux-bold-stroke + colors.content-primary,
+    stroke: styles.strokes.faux-bold-stroke + styles.colors.content.primary,
   )
 
-  show link: set text(fill: colors.primary)
+  show link: set text(fill: styles.colors.brand.primary)
 
   set list(
-    marker: text(fill: colors.primary, "▪"),
-    indent: sizes.layout.list-indent,
-    body-indent: sizes.layout.list-indent,
+    marker: text(fill: styles.colors.brand.primary, "▪"),
+    indent: styles.layout.sizes.list-indent,
+    body-indent: styles.layout.sizes.list-indent,
   )
 
   body
