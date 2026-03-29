@@ -24,6 +24,7 @@
   subtitle: primitive-font-sizes.sm,
   description: primitive-font-sizes.sm,
   tag: primitive-font-sizes.xsm,
+  icon: 0.85em,
 )
 
 #let font-leadings = (

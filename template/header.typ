@@ -4,8 +4,6 @@
 
 #import "../styles/mod.typ": styles
 
-// TODO: Consider moving size values to design system.
-
 #let header(
   author: (
     first-name: "",
@@ -43,17 +41,17 @@
         fill: styles.colors.content.secondary,
       )
 
-      fa-phone(size: 0.85em)
+      fa-phone(size: styles.fonts.sizes.icon)
       [ ]
       link("tel:" + author.phone-number, author.phone-number)
       linebreak()
 
-      fa-envelope(size: 0.85em)
+      fa-envelope(size: styles.fonts.sizes.icon)
       [ ]
       link("mailto:" + author.email, author.email)
       linebreak()
 
-      fa-linkedin(size: 0.85em)
+      fa-linkedin(size: styles.fonts.sizes.icon)
       [ ]
       link(
         author.social-accounts.linkedin.url,
@@ -61,7 +59,7 @@
       )
       linebreak()
 
-      fa-github(size: 0.85em)
+      fa-github(size: styles.fonts.sizes.icon)
       [ ]
       link(
         author.social-accounts.github.url,

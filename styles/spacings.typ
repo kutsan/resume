@@ -11,4 +11,7 @@
 #let spacing = (
   tag-gap: primitive-spacings.xs,
   tag-padding-x: primitive-spacings.sm,
+  tag-padding-y: 3.5pt,
+  tag-radius: 2pt,
+  tag-leading: 0.4em,
 )

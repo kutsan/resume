@@ -3,12 +3,11 @@
 #let tag-list-styles = (
   padding: (
     x: styles.spacing.tag-padding-x,
-    y: 3.5pt,
+    y: styles.spacing.tag-padding-y,
   ),
-  radius: 2pt,
-  border-width: 0.5pt,
+  radius: styles.spacing.tag-radius,
   gap: styles.spacing.tag-gap,
-  leading: 0.4em,
+  leading: styles.spacing.tag-leading,
 )
 
 #let tag-list(items) = {
