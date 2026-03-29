@@ -1,9 +1,7 @@
-#import "../components/mod.typ": section-heading, labeled-entry
+#import "../components/mod.typ": content-block
 
-#section-heading("Summary")
+= Summary
 
-#labeled-entry([
-  Fullstack developer with 8+ years of experience building web and mobile applications.
-  Specialized in TypeScript, React, and Node.js ecosystems.
-  Focused on code quality, scalability, and delivering polished user experiences.
-])
+#content-block[
+  Fullstack developer with 8+ years of experience building web and mobile applications. Specialized in TypeScript, React, and Node.js ecosystems. Focused on code quality, scalability, and delivering polished user experiences.
+]

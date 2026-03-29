@@ -1,8 +1,10 @@
-#import "../theme/mod.typ" as theme
-#import "../components/mod.typ": section-heading, education-entry
+#import "../containers/mod.typ": education-entry
 
-#section-heading("Education")
+= Education
 
-#stack(dir: ttb, spacing: theme.education-entry-gap,
-  education-entry("Polinas Technical Anatolian High School", "Information Technologies", "2011", "2015"),
+#education-entry(
+  school-name: "Polinas Technical Anatolian High School",
+  department-name: "Information Technologies",
+  start-year: "2011",
+  end-year: "2015",
 )

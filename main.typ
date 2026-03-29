@@ -1,23 +1,31 @@
-#import "theme/mod.typ" as theme
-#import "theme/mod.typ": page-styles
-#import "data/personal.typ": personal
-#import "components/mod.typ": resume-header, resume-footer
+#import "template/mod.typ": template
 
-#set page(
-  paper: "a4",
-  margin: (x: 1.6cm, y: 2.2cm),
-  footer: resume-footer(personal),
+#show: template.with(
+  author: (
+    first-name: "Kutsan",
+    last-name: "Kaplan",
+    title: "Senior Software Developer",
+    email: "me@kutsan.dev",
+    phone-number: "[redacted]",
+    social-accounts: (
+      github: (
+        label: "github.com/kutsan",
+        url: "https://github.com/kutsan",
+      ),
+      linkedin: (
+        label: "linkedin.com/in/kutsan",
+        url: "https://linkedin.com/in/kutsan",
+      ),
+    ),
+  ),
+  keywords: (
+    "resume",
+    "senior software developer",
+    "fullstack developer",
+    "frontend developer",
+    "web development",
+    "mobile development",
+  ),
 )
-
-#set document(
-  title: personal.first-name + " " + personal.last-name + " — Resume",
-  author: personal.first-name + " " + personal.last-name,
-  keywords: ("resume", "senior software developer", "fullstack developer", "frontend developer", "web development", "mobile development"),
-  date: datetime.today(),
-)
-
-#show: page-styles
-
-#resume-header(personal)
 
 #include "sections/mod.typ"
