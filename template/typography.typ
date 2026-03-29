@@ -44,9 +44,8 @@
   show link: set text(fill: styles.colors.brand.primary)
 
   set list(
-    marker: text(fill: styles.colors.brand.primary, "▪"),
-    indent: styles.layout.sizes.list-indent,
-    body-indent: styles.layout.sizes.list-indent,
+    marker: text(fill: styles.colors.brand.primary, styles.symbols.bullet),
+    spacing: styles.layout.sizes.block-spacing.small,
   )
 
   body

@@ -12,7 +12,7 @@
     ),
   )
 
-  set block(spacing: styles.layout.sizes.block-spacing.base)
+  set block(spacing: styles.layout.sizes.block-spacing.large)
 
   body
 }

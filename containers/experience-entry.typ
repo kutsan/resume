@@ -48,31 +48,31 @@
   if employment-type != none { meta-parts.push(employment-type) }
   if location-type != none { meta-parts.push(location-type) }
 
-  block(
-    above: styles.layout.sizes.entry-spacing,
-    below: 0pt,
+  content-block(aside: date-aside)[
+    #place(hide(heading(
+      level: 2,
+      outlined: true,
+      bookmarked: true,
+    )[#title #styles.symbols.em-dash #company-name]))
 
-    content-block(aside: date-aside)[
-      #place(hide(heading(
-        level: 2,
-        outlined: true,
-        bookmarked: true,
-      )[#title #styles.symbols.em-dash #company-name]))
+    *#title*, #company-name-content \
+    #text(
+      size: styles.fonts.sizes.subtitle,
+      fill: styles.colors.content.secondary,
+      meta-parts.join(" " + styles.symbols.middle-dot + " "),
+    )
 
-      *#title*, #company-name-content \
-      #text(
-        size: styles.fonts.sizes.subtitle,
-        fill: styles.colors.content.secondary,
-        meta-parts.join(" " + styles.symbols.middle-dot + " "),
-      )
+    #set par(leading: styles.fonts.leadings.body)
 
-      #set par(leading: styles.fonts.leadings.body)
-      #show list: set text(size: styles.fonts.sizes.description)
-      #set list(
-        marker: text(fill: styles.colors.brand.primary, styles.symbols.bullet),
-        spacing: styles.layout.sizes.block-spacing.compact,
-      )
-      #body
-    ],
-  )
+    #show strong: set text(
+      stroke: styles.strokes.faux-bold-stroke + styles.colors.content.secondary,
+    )
+
+    #show list: set text(
+      size: styles.fonts.sizes.description,
+      fill: styles.colors.content.secondary,
+    )
+
+    #body
+  ]
 }

@@ -22,7 +22,7 @@
         fill: styles.colors.brand.tertiary,
 
         text(
-          size: styles.fonts.sizes.footer,
+          size: styles.fonts.sizes.tag,
           fill: styles.colors.brand.secondary,
           item,
         ),

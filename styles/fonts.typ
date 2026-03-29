@@ -3,6 +3,7 @@
 )
 
 #let primitive-font-sizes = (
+  xsm: 8pt,
   xs: 9pt,
   sm: 10pt,
   md: 11pt,
@@ -21,6 +22,7 @@
   aside: primitive-font-sizes.sm,
   subtitle: primitive-font-sizes.sm,
   description: primitive-font-sizes.sm,
+  tag: primitive-font-sizes.xsm,
 )
 
 #let font-leadings = (

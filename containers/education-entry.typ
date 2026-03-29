@@ -16,7 +16,7 @@
       #grid(
         columns: (1fr, auto),
         column-gutter: styles.layout.sizes.column-gutter,
-        row-gutter: styles.layout.sizes.block-spacing.compact,
+        row-gutter: styles.layout.sizes.block-spacing.small,
 
         strong(school-name),
 
@@ -24,7 +24,11 @@
           size: styles.fonts.sizes.aside,
           fill: styles.colors.content.tertiary,
 
-          format-year(start-date) + " " + styles.symbols.en-dash + " " + format-year(end-date),
+          format-year(start-date)
+            + " "
+            + styles.symbols.en-dash
+            + " "
+            + format-year(end-date),
         ),
 
         text(

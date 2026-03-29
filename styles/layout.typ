@@ -15,15 +15,16 @@
   column-gutter: 10pt,
   heading-rule-height: 0.25em,
   block-spacing: (
-    base: 1.5em,
-    compact: 1em,
+    small: 1em,
+    medium: 1.2em,
+    large: 1.5em,
+    xlarge: 1.8em,
   ),
   heading-spacing: (
     base: (
       above: 1.8em,
-      below: 1.2em,
+      below: 1.3em,
     ),
   ),
   list-indent: 0.5em,
-  entry-spacing: 1.6em,
 )
