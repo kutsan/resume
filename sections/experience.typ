@@ -64,7 +64,7 @@
 ]
 
 #experience-entry(
-  start-date: datetime(year: 2021, month: 3, day: 1),
+  start-date: datetime(year: 2021, month: 1, day: 1),
   end-date: datetime(year: 2021, month: 12, day: 1),
   title: "Frontend Developer",
   company-name: "Eduo Technology",
