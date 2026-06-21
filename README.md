@@ -4,7 +4,7 @@ My personal resume built with [Typst](https://typst.app/).
 
 ## Preview
 
-View the latest published PDF at <https://kutsan.github.io/resume/>.
+View the latest published PDF at [resume.kutsan.dev](https://resume.kutsan.dev).
 
 ## Development
 
