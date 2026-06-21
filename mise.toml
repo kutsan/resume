@@ -12,13 +12,13 @@ typstyle = "0.14.4"
 tinymist = "0.15.0"
 
 [tasks.build]
-run = "typst compile $TYPST_INPUT $TYPST_OUTPUT"
+run = "mkdir -p $(dirname $TYPST_OUTPUT) && typst compile $TYPST_INPUT $TYPST_OUTPUT"
 
 [tasks.watch]
-run = "typst watch $TYPST_INPUT $TYPST_OUTPUT"
+run = "mkdir -p $(dirname $TYPST_OUTPUT) && typst watch $TYPST_INPUT $TYPST_OUTPUT"
 
 [tasks.clean]
-run = "rm -rf out"
+run = "rm -rf $(dirname $TYPST_OUTPUT)"
 
 [tasks.format]
 run = "typstyle --inplace ."
