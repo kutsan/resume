@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  workflow_call:
+    outputs:
+      filename:
+        description: Built PDF filename
+        value: ${{ jobs.build.outputs.filename }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      filename: ${{ steps.prep.outputs.filename }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up mise
+        uses: jdx/mise-action@v4
+
+      - name: Build PDF
+        run: mise run build
+
+      - name: Prepare artifact
+        id: prep
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs')
+
+            const prefix = '${{ vars.BUILD_OUTPUT_FILE_PREFIX }}'
+            const filename = prefix
+              ? `${prefix}-resume.pdf`
+              : `resume.pdf`
+
+            fs.renameSync('out/main.pdf', filename)
+            core.setOutput('filename', filename)
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.prep.outputs.filename }}
+          path: ${{ steps.prep.outputs.filename }}

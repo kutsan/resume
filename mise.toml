@@ -1,0 +1,28 @@
+[settings]
+lockfile = true
+
+[env]
+TYPST_FONT_PATHS = "{{config_root}}/fonts"
+
+[tools]
+typst = "0.15.0"
+typstyle = "0.14.4"
+tinymist = "0.15.0"
+
+[tasks.build]
+run = "typst compile main.typ out/main.pdf"
+
+[tasks.watch]
+run = "typst watch main.typ out/main.pdf"
+
+[tasks.clean]
+run = "rm -rf out"
+
+[tasks.format]
+run = "typstyle -i ."
+
+[tasks."check:format"]
+run = "typstyle --check ."
+
+[tasks."check:lint"]
+run = "find . -type f -name '*.typ' -not -path './out/*' -exec tinymist lint --root . {} +"

@@ -1,0 +1,30 @@
+name: Checks
+
+on:
+  workflow_call: {}
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Check formatting
+            command: check:format
+          - name: Check lint
+            command: check:lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up mise
+        uses: jdx/mise-action@v4
+
+      - name: ${{ matrix.name }}
+        run: mise run ${{ matrix.command }}

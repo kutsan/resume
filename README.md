@@ -4,26 +4,30 @@ My personal resume built with [Typst](https://typst.app/).
 
 ## Preview
 
-See [latest builds](https://github.com/kutsan/resume/actions/workflows/build.yml), open the latest run, and download the artifact to view the built PDF.
+View the latest published PDF at <https://kutsan.github.io/resume/>.
 
 ## Development
 
-Requires [Typst](https://typst.app/) and [just](https://github.com/casey/just).
+Use [mise](https://mise.jdx.dev/) to install dependencies.
 
 ```sh
-just build
+mise install
 ```
 
-The compiled PDF will be at `out/main.pdf`.
-
-To watch for changes and rebuild automatically:
+Build the PDF:
 
 ```sh
-just watch
+mise run build
 ```
 
-To remove build artifacts:
+Watch for changes and rebuild automatically:
 
 ```sh
-just clean
+mise run watch
+```
+
+Remove build artifacts:
+
+```sh
+mise run clean
 ```

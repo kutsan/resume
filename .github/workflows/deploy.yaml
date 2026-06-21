@@ -1,0 +1,68 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    uses: ./.github/workflows/_checks.yaml
+
+  build:
+    needs: checks
+    uses: ./.github/workflows/_build.yaml
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: ${{ needs.build.outputs.filename }}
+
+      - name: Create index.html redirect
+        uses: actions/github-script@v8
+        env:
+          FILENAME: ${{ needs.build.outputs.filename }}
+        with:
+          script: |
+            const fs = require('fs')
+
+            const filename = process.env.FILENAME
+            const html = [
+              '<!DOCTYPE html>',
+              '<meta charset="utf-8">',
+              `<meta http-equiv="refresh" content="0; url=${filename}">`,
+              '<title>Resume</title>',
+              `<link rel="canonical" href="${filename}">`,
+              '',
+            ].join('\n')
+
+            fs.writeFileSync('index.html', html)
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
