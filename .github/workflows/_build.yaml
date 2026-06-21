@@ -38,7 +38,7 @@ jobs:
               ? `${prefix}-resume.pdf`
               : `resume.pdf`
 
-            fs.renameSync('out/main.pdf', filename)
+            fs.renameSync(process.env.TYPST_OUTPUT, filename)
             core.setOutput('filename', filename)
 
       - name: Upload artifact
