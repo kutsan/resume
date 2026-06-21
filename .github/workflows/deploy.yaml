@@ -38,7 +38,7 @@ jobs:
         with:
           name: ${{ needs.build.outputs.filename }}
 
-      - name: Create index.html redirect
+      - name: Create index.html redirect and robots.txt
         uses: actions/github-script@v8
         env:
           FILENAME: ${{ needs.build.outputs.filename }}
@@ -50,13 +50,14 @@ jobs:
             const html = [
               '<!DOCTYPE html>',
               '<meta charset="utf-8">',
+              '<meta name="robots" content="noindex, nofollow">',
               `<meta http-equiv="refresh" content="0; url=${filename}">`,
-              '<title>Resume</title>',
               `<link rel="canonical" href="${filename}">`,
               '',
             ].join('\n')
 
             fs.writeFileSync('index.html', html)
+            fs.writeFileSync('robots.txt', 'User-agent: *\nDisallow: /\n')
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
