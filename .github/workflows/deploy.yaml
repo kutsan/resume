@@ -42,22 +42,30 @@ jobs:
         uses: actions/github-script@v8
         env:
           FILENAME: ${{ needs.build.outputs.filename }}
+          TITLE: ${{ vars.BUILD_OUTPUT_PAGE_TITLE }}
         with:
           script: |
             const fs = require('fs')
 
             const filename = process.env.FILENAME
-            const html = [
+            const title = process.env.TITLE || 'Resume'
+
+            const htmlContent = [
               '<!DOCTYPE html>',
               '<meta charset="utf-8">',
+              `<title>${title}</title>`,
               '<meta name="robots" content="noindex, nofollow">',
               `<meta http-equiv="refresh" content="0; url=${filename}">`,
               `<link rel="canonical" href="${filename}">`,
-              '',
-            ].join('\n')
+            ].join('\n') + '\n'
 
-            fs.writeFileSync('index.html', html)
-            fs.writeFileSync('robots.txt', 'User-agent: *\nDisallow: /\n')
+            const robotsTxtContent = [
+              'User-agent: *',
+              'Disallow: /',
+            ].join('\n') + '\n'
+
+            fs.writeFileSync('index.html', htmlContent)
+            fs.writeFileSync('robots.txt', robotsTxtContent)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
